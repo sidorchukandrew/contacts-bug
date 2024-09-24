@@ -1,20 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, Text, View } from 'react-native';
+import * as Contacts from "expo-contacts"
 
 export default function App() {
+  function handleCreateContact() {
+    Contacts.presentFormAsync(null, { "firstName": "Test" }, { cancelButtonTitle: "CANCEL!" })
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1, alignItems: "center", justifyContent: 'center' }}>
+      <TouchableOpacity onPress={handleCreateContact}>
+        <Text>Create contact</Text>
+        </TouchableOpacity>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
